@@ -27,6 +27,15 @@ let newText = joinedWords
 setText(newText);
 };
 
+const handleCopyClick = () => {
+navigator.clipboard.writeText(text); 
+};
+
+const handleExtraSpaces = () => {
+let newText = text.split(/[ ]+/);
+setText(newText.join(" "));
+};
+
 const handleClearClick = () => {
 let newText = "";
 setText(newText);
@@ -48,10 +57,11 @@ return (
     <button className="btn btn-primary mx-2" onClick={handleLowClick}>Convert to Lowercase</button>
     <button className="btn btn-primary mx-2" onClick={handleSentenceClick}>Convert to Sentencecase</button>
     <button className="btn btn-primary mx-2" onClick={handleReverseClick}>Reverse Text</button>
-    <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
-
-
+    <button className="btn btn-primary mx-2" onClick={handleCopyClick}>Copy Text</button>
+    <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>Remove Extra Space</button>
+    <button className="btn btn-primary mx-2 my-3" onClick={handleClearClick}>Clear Text</button>
   </div>
+
   <div className="container my-3">
     <h2>Your Text Summary</h2>
     <p> {text.split(" ").length} words and {text.length} characters</p>
